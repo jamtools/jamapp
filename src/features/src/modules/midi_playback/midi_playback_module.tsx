@@ -3,8 +3,7 @@ import React from 'react';
 import springboard from 'springboard';
 
 import {ParsedMidiFile} from '@jamtools/core/modules/midi_files/midi_file_parser/midi_file_parser';
-
-import '@jamtools/core/modules/midi_files/midi_files_module';
+import '@jamtools/core/modules';
 
 declare module 'springboard/module_registry/module_registry' {
     interface AllModules {
@@ -17,8 +16,7 @@ type MidiPlaybackModuleReturnValue = {
 };
 
 springboard.registerModule('MidiPlayback', {}, async (moduleAPI): Promise<MidiPlaybackModuleReturnValue> => {
-    // @ts-expect-error - MidiFile module is registered via side-effect import above
-    const midiFileModule = moduleAPI.deps.module.moduleRegistry.getModule('MidiFile') as any;
+    const midiFileModule = moduleAPI.deps.module.moduleRegistry.getModule('MidiFile');
 
     const savedMidiFileData = await moduleAPI.statesAPI.createPersistentState<ParsedMidiFile | null>('savedMidiFileData', null);
 
