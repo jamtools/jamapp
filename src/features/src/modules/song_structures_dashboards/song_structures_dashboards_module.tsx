@@ -5,8 +5,8 @@ import {Link} from 'react-router';
 import springboard from 'springboard';
 import {MidiEvent} from '@jamtools/core/modules/macro_module/macro_module_types';
 
-import {GuitarChordRootsDisplay, GuitarTabView} from '@jamtools/features/modules/song_structures/components/guitar_tab_view';
-import {ChordChoice, ChordDisplay} from '@jamtools/features/modules/song_structures/components/chord_display';
+import {GuitarChordRootsDisplay, GuitarTabView} from '../song_structures/components/guitar_tab_view';
+import {ChordChoice, ChordDisplay} from '../song_structures/components/chord_display';
 
 declare module 'springboard/module_registry/module_registry' {
     interface AllModules {

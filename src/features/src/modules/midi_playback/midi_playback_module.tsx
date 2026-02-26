@@ -17,7 +17,8 @@ type MidiPlaybackModuleReturnValue = {
 };
 
 springboard.registerModule('MidiPlayback', {}, async (moduleAPI): Promise<MidiPlaybackModuleReturnValue> => {
-    const midiFileModule = moduleAPI.deps.module.moduleRegistry.getModule('MidiFile');
+    // @ts-expect-error - MidiFile module is registered via side-effect import above
+    const midiFileModule = moduleAPI.deps.module.moduleRegistry.getModule('MidiFile') as any;
 
     const savedMidiFileData = await moduleAPI.statesAPI.createPersistentState<ParsedMidiFile | null>('savedMidiFileData', null);
 
@@ -68,7 +69,7 @@ springboard.registerModule('MidiPlayback', {}, async (moduleAPI): Promise<MidiPl
         return (
             <div>
                 <midiFileModule.components.Upload
-                    onParsed={data => handleParsedMidiFile({data})}
+                    onParsed={(data: ParsedMidiFile) => handleParsedMidiFile({data})}
                 />
 
                 Input trigger:
