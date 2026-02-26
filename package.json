@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.19.9",
+    "@jamtools/core": "0.0.1-dev-vite-with-docs-7",
     "better-sqlite3": "^12.6.2",
     "crossws": "^0.4.4",
     "hono": "^4.12.3",
