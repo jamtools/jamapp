@@ -5,6 +5,8 @@ import '@jamtools/core/modules';
 import './features/src/modules';
 import './modules/ui_main';
 
+import '@jamtools/core/modules/macro_module/macro_module';
+
 // Demo module to test the UI shell
 springboard.registerModule('demo', {}, async (moduleAPI) => {
     moduleAPI.registerRoute('', {}, () => {
