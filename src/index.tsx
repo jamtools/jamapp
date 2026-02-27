@@ -1,10 +1,8 @@
 import React from 'react';
 import springboard from 'springboard';
 
-// Temporarily commented out until @jamtools/core export conditions are published
-// import '@jamtools/core/modules';
-// import './features/src/modules';
-
+import '@jamtools/core/modules';
+import './features/src/modules';
 import './modules/ui_main';
 
 // Demo module to test the UI shell
