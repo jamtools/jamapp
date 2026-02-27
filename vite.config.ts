@@ -21,7 +21,7 @@ export default defineConfig({
         title: 'My App',
         description: 'My really cool app',
       },
-      nodeServerPort: 1337,
+      nodeServerPort: 3030,
     }),
   ],
   resolve: {

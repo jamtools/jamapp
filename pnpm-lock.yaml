@@ -12,8 +12,8 @@ importers:
         specifier: ^1.19.9
         version: 1.19.9(hono@4.12.3)
       '@jamtools/core':
-        specifier: 0.0.1-dev-jamapp-5
-        version: 0.0.1-dev-jamapp-5(@tonejs/midi@2.0.28)(springboard@0.0.1-dev-jamapp-5(crossws@0.4.4)(immer@11.1.4)(isomorphic-ws@4.0.1(ws@8.19.0))(kysely@0.28.11)(react-dom@19.2.4(react@19.2.4))(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(rxjs@7.8.2)(vite@7.3.1(@types/node@25.3.2)))
+        specifier: 0.0.1-dev-jamapp-10
+        version: 0.0.1-dev-jamapp-10(@tonejs/midi@2.0.28)(springboard@0.0.1-dev-jamapp-10(crossws@0.4.4)(immer@11.1.4)(isomorphic-ws@4.0.1(ws@8.19.0))(kysely@0.28.11)(react-dom@19.2.4(react@19.2.4))(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(rxjs@7.8.2)(vite@7.3.1(@types/node@25.3.2)))
       better-sqlite3:
         specifier: ^12.6.2
         version: 12.6.2
@@ -42,8 +42,8 @@ importers:
         specifier: ^7.8.2
         version: 7.8.2
       springboard:
-        specifier: 0.0.1-dev-jamapp-5
-        version: 0.0.1-dev-jamapp-5(crossws@0.4.4)(immer@11.1.4)(isomorphic-ws@4.0.1(ws@8.19.0))(kysely@0.28.11)(react-dom@19.2.4(react@19.2.4))(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(rxjs@7.8.2)(vite@7.3.1(@types/node@25.3.2))
+        specifier: 0.0.1-dev-jamapp-10
+        version: 0.0.1-dev-jamapp-10(crossws@0.4.4)(immer@11.1.4)(isomorphic-ws@4.0.1(ws@8.19.0))(kysely@0.28.11)(react-dom@19.2.4(react@19.2.4))(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(rxjs@7.8.2)(vite@7.3.1(@types/node@25.3.2))
     devDependencies:
       '@types/node':
         specifier: ^25.3.2
@@ -367,11 +367,11 @@ packages:
       '@hono/node-server': ^1.19.2
       hono: ^4.6.0
 
-  '@jamtools/core@0.0.1-dev-jamapp-5':
-    resolution: {integrity: sha512-l0kiBwVvuIXJmDQL9HXoy1GvG5J5dgpb2lmFcGXm8PlJts6v41yzVakoiX3RUzswVebzm5f7cKdLw83TQQdGFw==}
+  '@jamtools/core@0.0.1-dev-jamapp-10':
+    resolution: {integrity: sha512-2VB5lKqFNKgzlf/fZSSLYHzP++MILB40sK/FjS5geVm/aI1JhFTcJC0bTRwqQJTVG0IlnGKqnhkqHU+J4qBHYA==}
     peerDependencies:
       '@tonejs/midi': ^2.0.0
-      springboard: 0.0.1-dev-jamapp-5
+      springboard: 0.0.1-dev-jamapp-10
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -1319,8 +1319,8 @@ packages:
     resolution: {integrity: sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==}
     engines: {node: '>=0.10.0'}
 
-  springboard@0.0.1-dev-jamapp-5:
-    resolution: {integrity: sha512-0fcLMx/ddcOoh+D3Qo+mqF5oepjxqLfwXH8PHwDzzdqvmg/0a0mg8gZaqlBbCZhGFriW7RwMq70g/6Cve3Q0DA==}
+  springboard@0.0.1-dev-jamapp-10:
+    resolution: {integrity: sha512-RsB8S8hUNolAfV4ydVCZwOwLSNj/M+FV2Gwm8QNYg0+KOwOH8D59PPHArEfX55n/Z5IjPWRZ/NyX9/rveA+oIg==}
     hasBin: true
     peerDependencies:
       '@tauri-apps/api': ^2.9.0
@@ -1811,14 +1811,14 @@ snapshots:
       - utf-8-validate
     optional: true
 
-  '@jamtools/core@0.0.1-dev-jamapp-5(@tonejs/midi@2.0.28)(springboard@0.0.1-dev-jamapp-5(crossws@0.4.4)(immer@11.1.4)(isomorphic-ws@4.0.1(ws@8.19.0))(kysely@0.28.11)(react-dom@19.2.4(react@19.2.4))(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(rxjs@7.8.2)(vite@7.3.1(@types/node@25.3.2)))':
+  '@jamtools/core@0.0.1-dev-jamapp-10(@tonejs/midi@2.0.28)(springboard@0.0.1-dev-jamapp-10(crossws@0.4.4)(immer@11.1.4)(isomorphic-ws@4.0.1(ws@8.19.0))(kysely@0.28.11)(react-dom@19.2.4(react@19.2.4))(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(rxjs@7.8.2)(vite@7.3.1(@types/node@25.3.2)))':
     dependencies:
       '@tonejs/midi': 2.0.28
       easymidi: 3.1.0
       immer: 10.1.1
       midi-file: 1.2.4
       soundfont-player: 0.12.0
-      springboard: 0.0.1-dev-jamapp-5(crossws@0.4.4)(immer@11.1.4)(isomorphic-ws@4.0.1(ws@8.19.0))(kysely@0.28.11)(react-dom@19.2.4(react@19.2.4))(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(rxjs@7.8.2)(vite@7.3.1(@types/node@25.3.2))
+      springboard: 0.0.1-dev-jamapp-10(crossws@0.4.4)(immer@11.1.4)(isomorphic-ws@4.0.1(ws@8.19.0))(kysely@0.28.11)(react-dom@19.2.4(react@19.2.4))(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(rxjs@7.8.2)(vite@7.3.1(@types/node@25.3.2))
       webmidi: 3.1.14
 
   '@jridgewell/gen-mapping@0.3.13':
@@ -2786,7 +2786,7 @@ snapshots:
 
   source-map@0.5.7: {}
 
-  springboard@0.0.1-dev-jamapp-5(crossws@0.4.4)(immer@11.1.4)(isomorphic-ws@4.0.1(ws@8.19.0))(kysely@0.28.11)(react-dom@19.2.4(react@19.2.4))(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(rxjs@7.8.2)(vite@7.3.1(@types/node@25.3.2)):
+  springboard@0.0.1-dev-jamapp-10(crossws@0.4.4)(immer@11.1.4)(isomorphic-ws@4.0.1(ws@8.19.0))(kysely@0.28.11)(react-dom@19.2.4(react@19.2.4))(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(rxjs@7.8.2)(vite@7.3.1(@types/node@25.3.2)):
     dependencies:
       commander: 14.0.3
       dexie: 4.3.0

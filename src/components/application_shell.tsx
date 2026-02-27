@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, createContext, useContext} from 'react';
 import {useLocation, useNavigate} from 'react-router';
 import type {Module} from 'springboard/module_registry/module_registry';
 
@@ -6,22 +6,14 @@ type Props = React.PropsWithChildren<{
     modules: Module[];
 }>;
 
-export const ApplicationShell = (props: Props) => {
-    return (
-        <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
-            <Header />
-            <div style={{display: 'flex', flex: 1, overflow: 'hidden'}}>
-                <Sidebar modules={props.modules} />
-                <main style={{flex: 1, overflow: 'auto', padding: '20px'}}>
-                    {props.children}
-                </main>
-            </div>
-        </div>
-    );
-};
+const ThemeContext = createContext({ isDark: false, toggleTheme: () => {} });
 
-const Header = () => {
-    const [isDark, setIsDark] = useState(false);
+export const ApplicationShell = (props: Props) => {
+    const [isDark, setIsDark] = useState(() => {
+        // Check initial color scheme
+        const scheme = document.documentElement.style.colorScheme;
+        return scheme === 'dark';
+    });
 
     const toggleTheme = () => {
         setIsDark(!isDark);
@@ -29,15 +21,50 @@ const Header = () => {
     };
 
     return (
+        <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100vh',
+                backgroundColor: isDark ? '#1a1a1a' : '#ffffff',
+                color: isDark ? '#e0e0e0' : '#000000',
+            }}>
+                <Header />
+                <div style={{display: 'flex', flex: 1, overflow: 'hidden'}}>
+                    <Sidebar modules={props.modules} />
+                    <main style={{flex: 1, overflow: 'auto', padding: '20px'}}>
+                        {props.children}
+                    </main>
+                </div>
+            </div>
+        </ThemeContext.Provider>
+    );
+};
+
+const Header = () => {
+    const { isDark, toggleTheme } = useContext(ThemeContext);
+
+    return (
         <header style={{
             padding: '10px 20px',
-            borderBottom: '1px solid #ccc',
+            borderBottom: isDark ? '1px solid #444' : '1px solid #ccc',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            backgroundColor: isDark ? '#252525' : '#ffffff',
         }}>
             <h1 style={{margin: 0, fontSize: '20px'}}>JamTools</h1>
-            <button onClick={toggleTheme}>
+            <button
+                onClick={toggleTheme}
+                style={{
+                    padding: '6px 12px',
+                    backgroundColor: isDark ? '#3a3a3a' : '#f0f0f0',
+                    border: isDark ? '1px solid #555' : '1px solid #ccc',
+                    borderRadius: '4px',
+                    color: isDark ? '#e0e0e0' : '#000000',
+                    cursor: 'pointer',
+                }}
+            >
                 {isDark ? '☀️' : '🌙'} Toggle Theme
             </button>
         </header>
@@ -49,6 +76,7 @@ type SidebarProps = {
 };
 
 const Sidebar = (props: SidebarProps) => {
+    const { isDark } = useContext(ThemeContext);
     const location = useLocation();
     const navigate = useNavigate();
     const [expandedModule, setExpandedModule] = useState<string | null>(null);
@@ -77,15 +105,24 @@ const Sidebar = (props: SidebarProps) => {
     return (
         <nav style={{
             width: '250px',
-            borderRight: '1px solid #ccc',
+            borderRight: isDark ? '1px solid #444' : '1px solid #ccc',
             overflow: 'auto',
             padding: '10px',
+            backgroundColor: isDark ? '#1e1e1e' : '#ffffff',
         }}>
-            <h2 style={{fontSize: '14px', marginTop: 0, marginBottom: '10px'}}>Modules</h2>
+            <h2 style={{
+                fontSize: '14px',
+                marginTop: 0,
+                marginBottom: '10px',
+                color: isDark ? '#b0b0b0' : '#666',
+            }}>
+                Modules
+            </h2>
             {modulesWithRoutes.map(module => {
                 const isExpanded = expandedModule === module.moduleId || activeModuleId === module.moduleId;
                 const routes = module.routes || {};
                 const routeKeys = Object.keys(routes);
+                const isActive = activeModuleId === module.moduleId;
 
                 return (
                     <div key={module.moduleId} style={{marginBottom: '10px'}}>
@@ -103,11 +140,14 @@ const Sidebar = (props: SidebarProps) => {
                                 width: '100%',
                                 padding: '8px',
                                 textAlign: 'left',
-                                border: '1px solid #ddd',
+                                border: isDark ? '1px solid #444' : '1px solid #ddd',
                                 borderRadius: '4px',
-                                background: activeModuleId === module.moduleId ? '#e3f2fd' : 'white',
+                                background: isActive
+                                    ? (isDark ? '#2d5a8c' : '#e3f2fd')
+                                    : (isDark ? '#2a2a2a' : '#ffffff'),
+                                color: isDark ? '#e0e0e0' : '#000000',
                                 cursor: 'pointer',
-                                fontWeight: activeModuleId === module.moduleId ? 'bold' : 'normal',
+                                fontWeight: isActive ? 'bold' : 'normal',
                             }}
                         >
                             {isExpanded ? '▼' : '▶'} {module.moduleId}
@@ -116,7 +156,7 @@ const Sidebar = (props: SidebarProps) => {
                         {isExpanded && routeKeys.length > 0 && (
                             <div style={{marginLeft: '15px', marginTop: '5px'}}>
                                 {routeKeys.map(route => {
-                                    const isActive = activeModuleId === module.moduleId && activeSubpath === route;
+                                    const isRouteActive = activeModuleId === module.moduleId && activeSubpath === route;
                                     return (
                                         <button
                                             key={route}
@@ -127,7 +167,10 @@ const Sidebar = (props: SidebarProps) => {
                                                 padding: '6px 8px',
                                                 textAlign: 'left',
                                                 border: 'none',
-                                                background: isActive ? '#bbdefb' : 'transparent',
+                                                background: isRouteActive
+                                                    ? (isDark ? '#1e4d7a' : '#bbdefb')
+                                                    : 'transparent',
+                                                color: isDark ? '#d0d0d0' : '#000000',
                                                 cursor: 'pointer',
                                                 borderRadius: '3px',
                                                 marginBottom: '2px',
